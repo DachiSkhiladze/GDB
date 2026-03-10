@@ -1,0 +1,23 @@
+# Build outputs
+**/classes/
+**/dist/
+**/bin/
+**/build/
+**/out/
+
+# IDE files
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Do NOT commit SDK JARs (proprietary Genedata binaries)
+**/lib/*.jar

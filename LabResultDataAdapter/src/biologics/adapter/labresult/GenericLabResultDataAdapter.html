@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note: everything outside body is ignored. -->
+</head>
+<body>
+	<div>
+		<style type = "text/css" scoped>
+			table#docuDadaTab, table#docuDadaTab th {
+			    border-top: 1px solid black;
+			    border-bottom: 1px solid black;
+			    border-collapse: collapse;
+			    background-color: white;
+			}
+			table#docuDadaTab th, table#docuDadaTab td {
+				padding: 5px 8px;
+			}
+			table#docuDadaTab tr:nth-child(odd) {
+			    background-color: #f2f2f2;
+			}
+			table#docuDadaTab tr:nth-child(even) {
+			   background-color: white;
+			}
+		</style>
+
+		<p>
+			GenericLabResultDataAdapter expects column based input file. Table header (first line) defines the 
+			file structure which means columns that identify parent (subject) entities as well as columns which contain the 
+			values of the attributes of the chosen Assay type.
+		</p>
+
+		<p>
+			Generic column-based format with entity id (cross entity-type) format example:
+		</p>
+		
+	<table id="docuDadaTab">
+		<thead>
+			<tr>
+				<th>Cell Line Batch ID</th>
+				<th>Host Cell Line Batch ID</th>
+				<th>Vector Batch ID</th>
+				<th>Protein Expression Batch ID</th>
+				<th>Protein Purification Batch ID</th>
+				<th>Sample ID</th>
+				<th>Sample Barcode</th>
+				<th>S</th>
+				<th>B</th>
+				<th>S/B</th>
+				<th>IC50</th>
+				<th>S0</th>
+				<th>S/S0</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>CLIB-1</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>5.1</td>
+				<td>3.4</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>HCLIB-3</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>4</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>2</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>VB-6</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>3</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>PEB-1</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>6</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>2</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>PPB-8</td>
+				<td></td>
+				<td></td>
+				<td>5.1</td>
+				<td>2</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>SMP-1</td>
+				<td></td>
+				<td>3.4</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>sample bc</td>
+				<td>3.4</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+		<p>
+			Note: 
+		</p>
+		<ul>
+			<li>Parent (subject) entity or sample may be specified per row (per Lab Result).</li>
+			<li>Sample entity could either be identified by ID or by Barcode.</li>
+			<li>Column separator and the date format are configured by the system parameters <code>table_export_import_format</code> 
+			and <code>format_pattern_date_with_time</code> respectively and specified in the PARAMETER table.</li>
+			<li>All columns except the parent identifiers and the assay attribute columns will be ignored.</li>
+		</ul>
+		
+	</div>
+</body>
+</html>

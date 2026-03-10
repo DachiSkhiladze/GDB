@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note: everything outside the body is ignored. -->
+</head>
+<body>
+	<div>
+		<style type = "text/css" scoped>
+			table#docuIpadaTab {
+			    background-color: white;
+			}
+			table#docuIpadaTab td {
+				padding: 2px 5px;
+				font-family: monospace;
+			}
+			table#docuIpadaTab tr:nth-child(even) {
+			    background-color: #f2f2f2;
+			}
+			table#docuIpadaTab tr:nth-child(odd) {
+			   background-color: white;
+			}
+		</style>
+
+		<p>
+			Example ELISA file format:
+		</p>
+		
+		<table id="docuIpadaTab">
+			<tbody>
+				<tr>
+					<td colspan="10">
+						>>>	024B-S000	S
+					</td>
+				</tr>
+				<tr>
+					<td>1.5583</td>
+					<td>1.4471</td>
+					<td>1.8904</td>
+					<td>1.8293</td>
+					<td>1.809</td>
+					<td>1.9249</td>
+					<td>1.8817</td>
+					<td>1.7685</td>
+					<td>1.5703</td>
+					<td>2.086</td>
+					<td>1.7315</td>
+					<td>0.0887</td>
+				</tr>
+				<tr>
+					<td>1.3991</td>
+					<td>1.5273</td>
+					<td>1.6155</td>
+					<td>1.9199</td>
+					<td>1.7747</td>
+					<td>1.6619</td>
+					<td>0.9637</td>
+					<td>1.6248</td>
+					<td>1.4112</td>
+					<td>1.759</td>
+					<td>1.5694</td>
+					<td>0.0816</td>
+				</tr>
+				<tr>
+					<td>1.547</td>
+					<td>1.7866</td>
+					<td>1.6302</td>
+					<td>1.2211</td>
+					<td>1.5404</td>
+					<td>1.46</td>
+					<td>0.9803</td>
+					<td>1.3865</td>
+					<td>1.1713</td>
+					<td>1.3042</td>
+					<td>1.2903</td>
+					<td>0.0818</td>
+				</tr>
+				<tr>
+					<td>1.9167</td>
+					<td>1.5593</td>
+					<td>1.3199</td>
+					<td>1.559</td>
+					<td>1.33</td>
+					<td>1.2733</td>
+					<td>1.2733</td>
+					<td>1.2993</td>
+					<td>1.4077</td>
+					<td>1.6331</td>
+					<td>1.5559</td>
+					<td>0.0842</td>
+				</tr>
+				<tr>
+					<td>1.7504</td>
+					<td>1.6642</td>
+					<td>1.3051</td>
+					<td>1.445</td>
+					<td>1.5015</td>
+					<td>1.4273</td>
+					<td>1.5334</td>
+					<td>1.6436</td>
+					<td>1.4753</td>
+					<td>1.3043</td>
+					<td>1.3344</td>
+					<td>0.0788</td>
+				</tr>
+				<tr>
+					<td>1.7913</td>
+					<td>1.6965</td>
+					<td>1.4194</td>
+					<td>1.2442</td>
+					<td>1.404</td>
+					<td>1.5408</td>
+					<td>1.4724</td>
+					<td>1.6809</td>
+					<td>1.6609</td>
+					<td>1.4568</td>
+					<td>1.7427</td>
+					<td>0.08</td>
+				</tr>
+				<tr>
+					<td>1.6769</td>
+					<td>1.501</td>
+					<td>1.4269</td>
+					<td>1.4526</td>
+					<td>1.3553</td>
+					<td>1.3943</td>
+					<td>1.397</td>
+					<td>1.6317</td>
+					<td>1.6232</td>
+					<td>1.4654</td>
+					<td>1.5233</td>
+					<td>0.0787</td>
+				</tr>
+				<tr>
+					<td>2.258</td>
+					<td>2.3812</td>
+					<td>2.5233</td>
+					<td>2.3809</td>
+					<td>2.2657</td>
+					<td>2.2124</td>
+					<td>2.2303</td>
+					<td>1.7345</td>
+					<td>2.5224</td>
+					<td>1.6758</td>
+					<td>2.245</td>
+					<td>0.0787</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<p>
+			Note: 
+		</p>
+		<ul>
+			<li>The header contains >>>, a delimiter, the plate name or barcode, another delimiter, and one measurement attribute (e.g., S for the signal from an ELISA) for each plate.</li>
+			<li>List subsequent measurement attributes and plates below.</li>
+			<li>All assay values correspond to their locations on the plate.</li>
+		</ul>
+		
+	</div>
+</body>
+</html>

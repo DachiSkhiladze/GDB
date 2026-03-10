@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note: everything outside body is ignored. -->
+</head>
+<body>
+	<div>
+		<style type = "text/css" scoped>
+			table#docuDadaTab, table#docuDadaTab th {
+			    border-top: 1px solid black;
+			    border-bottom: 1px solid black;
+			    border-collapse: collapse;
+			    background-color: white;
+			}
+			table#docuDadaTab th, table#docuDadaTab td {
+				padding: 5px 8px;
+			}
+			table#docuDadaTab tr:nth-child(odd) {
+			    background-color: #f2f2f2;
+			}
+			table#docuDadaTab tr:nth-child(even) {
+			   background-color: white;
+			}
+		</style>
+
+		<p>
+			Example resulting Biomek FX (rows-first numbering) LHS control file format:
+		</p>
+
+		<table id="docuDadaTab">
+			<thead>
+				<tr>
+					<th>SourceWell,SourcePlate,DestWell,DestPlate</th>
+				</tr>
+			</thead>
+				<tr>
+					<td>1,006NGK-D028,1,006NGK-A029</td>
+				</tr>
+				<tr>
+					<td>2,006NGK-D028,2,006NGK-A029</td>
+				</tr>
+				<tr>
+					<td>3,006NGK-D028,3,006NGK-A029</td>
+				</tr>
+		</table>
+	</div>
+</body>
+</html>
+

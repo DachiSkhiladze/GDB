@@ -1,0 +1,221 @@
+================================================================================
+  BIOLOGICS SDK DEMO — Protein Name Generator Adapter
+  Presentation Guide
+================================================================================
+
+
+WHAT THIS DEMO SHOWS
+====================
+A minimal, working Genedata Biologics adapter that automatically generates
+standardized protein names when scientists create new proteins in the system.
+
+When a user creates a protein, instead of typing a name manually, the system
+auto-generates a name like:
+
+    ProjectAlpha-AB-1
+    ProjectAlpha-AB-2
+    ProjectAlpha-AB-3
+    ...
+
+The prefix ("ProjectAlpha") is configurable via the database, and the
+sequential number is managed atomically by the platform.
+
+
+WHY THIS ADAPTER?
+=================
+The NameGenerator interface is the simplest adapter in the SDK — only 4 methods
+to implement. It demonstrates every key SDK concept:
+
+  1. The adapter lifecycle  (setConfiguration -> generateName)
+  2. Database configuration (reading from PARAMETER table)
+  3. Platform services      (NumberingFactory for sequential IDs)
+  4. Registration via SQL   (INSERT into ADAPTER_IMPLEMENTATION)
+  5. Build with Ant         (ant jar -> deploy JAR)
+
+
+THE CODE (93 lines — fit for a slide)
+======================================
+
+  File: src/com/demo/adapter/ProjectPrefixNameGenerator.java
+
+  ┌─────────────────────────────────────────────────────────────────────┐
+  │ public class ProjectPrefixNameGenerator implements NameGenerator {  │
+  │                                                                     │
+  │   private String projectPrefix = "DEMO";                            │
+  │                                                                     │
+  │   // Called once on startup — reads config from Oracle              │
+  │   @Override                                                         │
+  │   public void setConfiguration(Map<String,String> config) {         │
+  │     String val = config.get("..._prefix");                          │
+  │     if (val != null) this.projectPrefix = val.trim();               │
+  │   }                                                                 │
+  │                                                                     │
+  │   // Called each time a user creates a Protein                      │
+  │   @Override                                                         │
+  │   public String generateName(Map<String,String> context,            │
+  │                              NumberingFactory numbering) {           │
+  │     String namespace = getClass().getName() + "_" + projectPrefix;  │
+  │     int next = numbering.nextNumber(namespace);                     │
+  │     return projectPrefix + "-AB-" + next;                           │
+  │   }                                                                 │
+  │                                                                     │
+  │   @Override                                                         │
+  │   public String prefillName(Map<String,String> ctx) { return null; }│
+  │                                                                     │
+  │   @Override                                                         │
+  │   public boolean showNameToUserForEdit() { return true; }           │
+  │ }                                                                    │
+  └─────────────────────────────────────────────────────────────────────┘
+
+  That's it. 4 methods. ~30 lines of actual logic.
+
+
+HOW TO BUILD
+============
+The SDK uses Apache Ant. From the project directory:
+
+  cd DemoNameGeneratorAdapter/
+
+  # Compile and create JAR
+  ant jar
+
+  # Output: dist/customer-demo-name-generator.jar
+
+What happens under the hood:
+  1. javac compiles against lib/biologics-adapter.jar
+  2. Classes are packaged into a JAR in dist/
+
+Equivalent manual command (what we tested):
+  javac -cp "lib/biologics-adapter.jar;lib/reload4j-1.2.18.3.jar" \
+        -d classes \
+        src/com/demo/adapter/ProjectPrefixNameGenerator.java
+
+
+HOW TO DEPLOY
+=============
+Two steps:
+
+  STEP 1: Copy the JAR to the Biologics adapter directory
+  ───────────────────────────────────────────────────────
+    cp dist/customer-demo-name-generator.jar \
+       $CATALINA_HOME/biologics/adapter/
+
+  STEP 2: Run the registration SQL against Oracle
+  ───────────────────────────────────────────────
+    -- Register the adapter class
+    INSERT INTO adapter_implementation (
+        id, label, description, java_classname, adapter_interface_id
+    ) VALUES (
+        adapter_implementation_seq.nextval,
+        'Demo Project Prefix Name Generator',
+        'Generates protein names: {PROJECT}-AB-{number}',
+        'com.demo.adapter.ProjectPrefixNameGenerator',
+        (SELECT id FROM adapter_interface
+         WHERE java_classname = 'genedata.bx.adapter.NameGenerator')
+    );
+
+    -- Assign it to the Protein entity
+    UPDATE entity_configuration
+    SET name_generator_adapter_id = (
+        SELECT id FROM adapter_implementation
+        WHERE java_classname = 'com.demo.adapter.ProjectPrefixNameGenerator'
+    )
+    WHERE entity = 'Ppt';
+
+    -- (Optional) Set the prefix
+    INSERT INTO parameter (id, key, value, description) VALUES (
+        parameter_seq.nextval,
+        'com_demo_adapter_ProjectPrefixNameGenerator_prefix',
+        'ProjectAlpha',
+        'Prefix for protein names'
+    );
+
+    COMMIT;
+
+  STEP 3: Restart Tomcat
+  ─────────────────────
+    $CATALINA_HOME/bin/shutdown.sh
+    $CATALINA_HOME/bin/startup.sh
+
+
+THE ADAPTER PATTERN (ALL ADAPTERS WORK THIS WAY)
+=================================================
+Every adapter in the Biologics SDK follows the same 3-phase pattern:
+
+  Phase 1: CONFIGURE     setConfiguration(Map<String,String>)
+            ↓             Platform passes key-value pairs from DB
+  Phase 2: OPTIONS        options(XxxOptions)
+            ↓             Platform passes adapter-specific options
+  Phase 3: EXECUTE        perform(XxxCallback) / generateName() / process()
+                          Your code runs, using the callback to interact
+                          with the platform
+
+For NameGenerator specifically, the lifecycle is:
+  setConfiguration() → generateName() → return name string
+
+
+PROJECT STRUCTURE
+=================
+  DemoNameGeneratorAdapter/
+  ├── build.xml                          # Ant build script
+  ├── build.properties                   # Build config (JAR name, paths)
+  ├── lib/
+  │   ├── biologics-adapter.jar          # SDK API (provided by Genedata)
+  │   └── reload4j-1.2.18.3.jar         # Logging library
+  ├── register/
+  │   └── register-adapter.sql           # SQL to register in Biologics
+  └── src/
+      └── com/demo/adapter/
+          └── ProjectPrefixNameGenerator.java   # Our adapter (93 lines)
+
+
+KEY SDK CONCEPTS DEMONSTRATED
+==============================
+  1. ADAPTER INTERFACE — NameGenerator is one of ~25 extension points.
+     Others include: CustomToolAdapter (UI wizards), EntityEventListener
+     (react to data changes), ExternalAuthenticator (SSO/LDAP), etc.
+
+  2. CONFIGURATION — Adapters read config from the PARAMETER table.
+     No config files, no environment variables — everything is in Oracle.
+
+  3. PLATFORM SERVICES — NumberingFactory provides atomic sequential IDs.
+     Other services include Reporter (logging), InternalWebServiceInvoker
+     (call REST APIs), callback objects (access entities).
+
+  4. REGISTRATION — Adapters are registered via SQL, not config files.
+     The ADAPTER_IMPLEMENTATION table maps class names to interfaces.
+
+  5. DEPLOYMENT — JARs go to $CATALINA_HOME/biologics/adapter/.
+     Tomcat restart required. No hot-reload.
+
+
+WHAT ELSE COULD WE BUILD?
+==========================
+The same pattern applies to more complex adapters:
+
+  - EntityEventListenerAdapter: Push protein data to our LIMS when
+    scientists create/update records
+  - CustomToolAdapter: Add a "Generate Report" button on any entity page
+    with a multi-step wizard UI
+  - FastaHeaderParser: Parse our custom FASTA file format for sequencing
+    data import
+  - AssayDataAdapter: Import plate reader data from our instruments
+  - ExternalRegistrationAdapter: Sync protein registrations with
+    external ERP systems
+
+All follow the same build/deploy/register pattern shown here.
+
+
+SUMMARY FOR THE TEAM
+=====================
+  WHAT:  Genedata Biologics SDK = Java adapter framework for extending
+         the Biologics platform
+  HOW:   Implement a Java interface → build JAR → deploy → register via SQL
+  DEMO:  93-line NameGenerator that auto-names proteins "ProjectAlpha-AB-1"
+  STACK: Java 21, Ant, Oracle 19c, Tomcat 9
+  EFFORT: Simple adapters = hours. Complex adapters (LHS, Custom Tools) = days.
+
+
+================================================================================
+END OF PRESENTATION GUIDE
+================================================================================

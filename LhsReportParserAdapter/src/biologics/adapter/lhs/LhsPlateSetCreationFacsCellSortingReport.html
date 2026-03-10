@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note: everything outside body is ignored. -->
+</head>
+<body>
+	<div>
+		<style type = "text/css" scoped>
+			table#docuDadaTab, table#docuDadaTab th {
+			    border-top: 1px solid black;
+			    border-bottom: 1px solid black;
+			    border-collapse: collapse;
+			    background-color: white;
+			}
+			table#docuDadaTab th, table#docuDadaTab td {
+				padding: 5px 8px;
+			}
+			table#docuDadaTab tr:nth-child(odd) {
+			    background-color: #f2f2f2;
+			}
+			table#docuDadaTab tr:nth-child(even) {
+			   background-color: white;
+			}
+		</style>
+
+		<p>
+			Create a plate set with an LHS cell sorting report.
+		</p>
+		<p>
+			Example FACS cell sorting report format:
+			<table id="docuDadaTab">
+				<thead>
+					<tr>
+						<th>Clone Pool ID</th>
+						<th>Plate Barcode</th>
+					</tr>
+				</thead>
+					<tr>
+						<td>CP-5</td>
+						<td>DA0000000264</td>
+					</tr>
+					<tr>
+						<td>CP-5</td>
+						<td>DA0000000265</td>
+					</tr>
+					<tr>
+						<td>CP-5</td>
+						<td>DA0000000266</td>
+					</tr>
+					<tr>
+						<td>CP-5</td>
+						<td>DA0000000267</td>
+					</tr>
+					<tr>
+						<td>CP-5</td>
+						<td>DA0000000268</td>
+					</tr>
+			</table>
+		</p>
+		<p>
+			Note:
+			<ul>
+				<li>One plate is created for each barcode provided in the file.</li>
+				<li>The clone pools must already exist in Genedata Biologics.</li>
+				<li>The resulting plate set is a master plate set, and new antibody clone IDs are generated for each well of each plate.</li>
+			</ul>
+		</p>
+	</div>
+</body>
+</html>

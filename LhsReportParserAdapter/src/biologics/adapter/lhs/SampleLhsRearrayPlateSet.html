@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note: everything outside body is ignored. -->
+<!--
+Source Plate Barcode	Source Well Address	Destination Plate Barcode	Destination Well Address
+GD0000000891	A1	GD0000000903	A1
+GD0000000891	A2	GD0000000903	A2
+GD0000000891	A3	GD0000000903	A3
+GD0000000891	A4	GD0000000903	A4
+GD0000000891	B1	GD0000000903	B1
+GD0000000892	B2	GD0000000903	B2
+GD0000000892	B3	GD0000000903	B3
+GD0000000892	B4	GD0000000903	B4
+
+-->
+</head>
+<body>
+	<div>
+		<style type = "text/css" scoped>
+			table#docuDadaTab, table#docuDadaTab th {
+			    border-top: 1px solid black;
+			    border-bottom: 1px solid black;
+			    border-collapse: collapse;
+			    background-color: white;
+			}
+			table#docuDadaTab th, table#docuDadaTab td {
+				padding: 5px 8px;
+			}
+			table#docuDadaTab tr:nth-child(odd) {
+			    background-color: #f2f2f2;
+			}
+			table#docuDadaTab tr:nth-child(even) {
+			   background-color: white;
+			}
+		</style>
+		
+		<p>
+			Example liquid handling system file for re-arraying plates in Genedata Biologics. 
+		</p>
+		<table id="docuDadaTab">
+			<thead>
+				<tr>
+					<th>Source Plate Barcode</th>
+					<th>Source Well Address</th>
+					<th>Destination Plate Barcode</th>
+					<th>Destination Well Address</th>
+				</tr>
+			</thead>
+				<tr>
+					<td>GD0000000891</td>
+					<td>A1</td>
+					<td>GD0000000903</td>
+					<td>A1</td>
+				</tr>
+				<tr>
+					<td>GD0000000891</td>
+					<td>A2</td>
+					<td>GD0000000903</td>
+					<td>A2</td>
+				</tr>
+				<tr>
+					<td>GD0000000891</td>
+					<td>A3</td>
+					<td>GD0000000903</td>
+					<td>A3</td>
+				</tr>
+				<tr>
+					<td>GD0000000891</td>
+					<td>A4</td>
+					<td>GD0000000903</td>
+					<td>A4</td>
+				</tr>
+				<tr>
+					<td>GD0000000891</td>
+					<td>B1</td>
+					<td>GD0000000903</td>
+					<td>B1</td>
+				</tr>
+				<tr>
+					<td>GD0000000892</td>
+					<td>B2</td>
+					<td>GD0000000903</td>
+					<td>B2</td>
+				</tr>
+				<tr>
+					<td>GD0000000892</td>
+					<td>B3</td>
+					<td>GD0000000903</td>
+					<td>B3</td>
+				</tr>
+				<tr>
+					<td>GD0000000892</td>
+					<td>B4</td>
+					<td>GD0000000903</td>
+					<td>B4</td>
+				</tr>
+		</table>
+		<p>
+			Note:
+			<ul>
+				<li>The Source Plate Barcodes are specified in the first column.
+					The antibody clone in each indicated source well is re-arrayed to the specified destination well.</li>
+				<li>In case of single-well plates (both source and destination), Well Address (e.g. A1) can be skipped.</li>
+				<li>A new plate set is created in Genedata Biologics containing the plates with the specified Destination Plate Barcode.</li>
+			</ul>
+		</p>
+	</div>
+</body>
+</html>
+
+

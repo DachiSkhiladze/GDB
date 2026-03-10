@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<project name="LhsReportParserAdapter" basedir="." default="jar">
+	<property file="build.properties" />
+	
+	<path id="build.classpath">
+	      <pathelement location="lib/biologics-adapter.jar"/>
+	      <pathelement location="lib/reload4j-1.2.18.3.jar"/>
+	</path>
+	
+	<target name="clean">
+		<delete dir="${result.dir}" />
+		<delete dir="${stage.dir}"/>
+	</target>
+	
+	<target name="compile">
+		<mkdir dir="${classes.dir}"/>
+		<javac srcdir="${src.dir}"
+         destdir="${classes.dir}"
+         classpathref="build.classpath"
+         debug="on" includeantruntime="false" />
+	</target>
+	
+	<target name="jar" depends="compile">
+		<mkdir dir="${result.dir}"/>
+		<copy todir="${classes.dir}" includeEmptyDirs="false">
+			<fileset dir="${src.dir}" includes="**/*.html"/>
+		</copy>
+		<jar destfile="${result.dir}/${jar.name}" basedir="${classes.dir}"></jar>
+	</target>
+	
+	<target name="deploy" depends="jar">
+		<copy file="${result.dir}/${jar.name}" todir="${deploy.project.dir}"></copy>
+	</target>
+	
+</project>

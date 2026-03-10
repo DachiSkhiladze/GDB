@@ -1,0 +1,2 @@
+Name	Description	Screening Stage	Format	Clone Pool ID	Campaign ID
+HitList_123	HitList_XYZ_Description	Primary	IgG	CP-1	SC-1

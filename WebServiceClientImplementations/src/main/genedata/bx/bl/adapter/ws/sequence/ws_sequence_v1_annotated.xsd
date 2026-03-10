@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.genedata.com/Biologics/ws/sequence/v1" elementFormDefault="qualified" version="1.2" targetNamespace="http://www.genedata.com/Biologics/ws/sequence/v1">
+
+  <xs:element name="SequenceContainer" type="tns:SequenceContainer"/>
+
+  <xs:complexType name="Feature">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"><xs:annotation><xs:documentation>Identifier of a feature (used for updates)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="name" type="xs:string" minOccurs="0"><xs:annotation><xs:documentation>Name of a feature</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="description" type="xs:string" minOccurs="0"><xs:annotation><xs:documentation>Description of a feature</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="start" type="xs:long" minOccurs="0"><xs:annotation><xs:documentation>Starting position of a feature</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="stop" type="xs:long" minOccurs="0"><xs:annotation><xs:documentation>End position of a feature (can equal start)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="forwardStrand" type="xs:boolean" minOccurs="0"><xs:annotation><xs:documentation>Feature is on forward strand</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="score" type="xs:double" minOccurs="0"><xs:annotation><xs:documentation>Optional feature score</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="pValue" type="xs:double" minOccurs="0"><xs:annotation><xs:documentation>Optional feature pValue</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="type" type="xs:string" minOccurs="0"><xs:annotation><xs:documentation>Name of the feature type
+ (can not be used for updating the feature)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="typeKey" type="xs:string" minOccurs="0"><xs:annotation><xs:documentation>Database entry key of the feature type
+ (can be used to update the feature's feature type)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="sequence" type="tns:Sequence" minOccurs="0"><xs:annotation><xs:documentation>The translated sequence for the feature.
+ This optional field is only applicable for a feature of type CDS.</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="splices" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="splice" type="tns:ProteinMapping" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ProteinLocation">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"><xs:annotation><xs:documentation>Name of a protein location</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="description" type="xs:string" minOccurs="0"><xs:annotation><xs:documentation>Description of a protein location</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="start" type="xs:long"><xs:annotation><xs:documentation>Start of a protein location on the nucleotide sequence</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="stop" type="xs:long"><xs:annotation><xs:documentation>Stop of a protein location on the nucleotide sequence</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="forwardStrand" type="xs:boolean"><xs:annotation><xs:documentation>Strand of a protein location on the nucleotide sequence</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="proteinMappings" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="mapping" type="tns:ProteinMapping" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ProteinMapping">
+    <xs:sequence>
+      <xs:element name="start" type="xs:long"><xs:annotation><xs:documentation>Start of this exon on the nucleotide sequence</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="stop" type="xs:long"><xs:annotation><xs:documentation>Stop of this exon on the nucleotide sequence</xs:documentation></xs:annotation></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Sequence">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"><xs:annotation><xs:documentation>Identifier of a sequence (used for updates)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="name" type="xs:string" minOccurs="0"><xs:annotation><xs:documentation>Name of a sequence (database alias and chainInfo (optional))</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="qualifiedId" type="xs:string" minOccurs="0"><xs:annotation><xs:documentation>The qualified ID of the sequence (not always a unique identifier)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="chainInfoKey" type="xs:string" minOccurs="0"><xs:annotation><xs:documentation>Database entryKey of the sequence's chainInfo</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="description" type="xs:string" minOccurs="0"><xs:annotation><xs:documentation>Description of the sequence</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="synonym" type="xs:string" minOccurs="0"><xs:annotation><xs:documentation>Alternative name of the sequence</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="sequenceType" type="tns:SequenceType" minOccurs="0"><xs:annotation><xs:documentation>Sequence Type of the sequence; "AminoAcid", "Nucleotide" or "NucleotideRNA".</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="circular" type="xs:boolean" minOccurs="0"><xs:annotation><xs:documentation>True if sequence is circular</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="extinctionCoefficient" type="xs:double" minOccurs="0"><xs:annotation><xs:documentation>The extinction coefficient of the sequence (can be updated)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="extinctionCoefficientOxidized" type="xs:double" minOccurs="0"><xs:annotation><xs:documentation>The extinction coefficient of the sequence in oxidized form (can be updated)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="isoelectricPoint" type="xs:double" minOccurs="0"><xs:annotation><xs:documentation>The isoelectric point of the sequence (can be updated)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="isoelectricPointOxidized" type="xs:double" minOccurs="0"><xs:annotation><xs:documentation>The isoelectric point of the sequence in oxidized form (can be updated)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="molecularWeight" type="xs:double" minOccurs="0"><xs:annotation><xs:documentation>The molecular weight of the sequence (can be updated)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="molecularWeightOxidized" type="xs:double" minOccurs="0"><xs:annotation><xs:documentation>The molecular weight of the sequence in oxidized form (can be updated)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="molecularWeightBiophysical" type="xs:double" minOccurs="0"><xs:annotation><xs:documentation>The biophysical molecular weight of the sequence (can be updated)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="molecularWeightBiophysicalOxidized" type="xs:double" minOccurs="0"><xs:annotation><xs:documentation>The biophysical molecular weight of the sequence in oxidized form (can be updated)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="absorbance" type="xs:double" minOccurs="0"><xs:annotation><xs:documentation>The absorbance of the sequence (can be updated)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="propertyCalculationMethod" type="xs:string" minOccurs="0"><xs:annotation><xs:documentation>The property calculation method (can be updated)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="score" type="xs:double" minOccurs="0"><xs:annotation><xs:documentation>A score of the sequence (numeric) (can be updated)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="scoreText" type="xs:string" minOccurs="0"><xs:annotation><xs:documentation>A score of the sequence (text) (can be updated)</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="residues" type="xs:string" minOccurs="0"><xs:annotation><xs:documentation>The sequence residues</xs:documentation></xs:annotation></xs:element>
+      <xs:element name="features" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="feature" type="tns:Feature" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="proteinLocations" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="location" type="tns:ProteinLocation" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SequenceContainer">
+    <xs:sequence>
+      <xs:element name="sequences" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sequence" type="tns:Sequence" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="SequenceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Nucleotide"/>
+      <xs:enumeration value="NucleotideRNA"/>
+      <xs:enumeration value="AminoAcid"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

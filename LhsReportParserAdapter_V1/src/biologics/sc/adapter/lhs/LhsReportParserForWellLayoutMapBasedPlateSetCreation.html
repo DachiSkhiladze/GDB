@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note: everything outside body is ignored. -->
+</head>
+<body>
+	<div>
+		<style type = "text/css" scoped>
+			table#docuIpadaTab {
+			    background-color: white;
+			}
+			table#docuIpadaTab td {
+				padding: 2px 5px;
+				font-family: monospace;
+			}
+			table#docuIpadaTab tr:nth-child(even) {
+			    background-color: #f2f2f2;
+			}
+			table#docuIpadaTab tr:nth-child(odd) {
+			   background-color: white;
+			}
+		</style>
+
+		<p>
+			Example file format for creating a plate set via a well layout map:
+		</p>
+<table id="docuIpadaTab">
+<tbody>
+	<tr>
+		<td><span style="color: red;">Plate</span></td>
+		<td colspan="7">Plate description</td>
+	</tr>
+	<tr>
+		<td>Barcode</td>
+		<td colspan="7">GD0000024189</td>
+	</tr>
+	<tr>
+		<td>015IMGT-M011-C11</td>
+		<td>015IMGT-M021-E06</td>
+		<td>015IMGT-M030-G07</td>
+		<td>015IMGT-M034-B06</td>
+		<td>015IMGT-M039-G07</td>
+		<td>015IMGT-M046-H02</td>
+		<td>015IMGT-M059-C02</td>
+		<td>015IMGT-M068-H04</td>
+	</tr>
+	<tr>
+		<td>015IMGT-M012-E05</td>
+		<td>015IMGT-M021-F01</td>
+		<td>015IMGT-M031-A04</td>
+		<td>015IMGT-M034-G01</td>
+		<td>015IMGT-M040-F05</td>
+		<td>015IMGT-M047-H07</td>
+		<td>015IMGT-M061-D08</td>
+		<td>015IMGT-M069-D03</td>
+	</tr>
+	<tr>
+		<td>015IMGT-M013-C02</td>
+		<td>015IMGT-M026-A12</td>
+		<td>015IMGT-M031-E12</td>
+		<td>015IMGT-M035-G12</td>
+		<td>015IMGT-M040-F12</td>
+		<td>015IMGT-M051-G03</td>
+		<td>015IMGT-M062-E10</td>
+		<td>015IMGT-M070-A08</td>
+	</tr>
+	<tr>
+		<td>015IMGT-M014-E07</td>
+		<td>015IMGT-M026-D07</td>
+		<td>015IMGT-M031-H06</td>
+		<td>015IMGT-M036-E10</td>
+		<td>015IMGT-M040-G12</td>
+		<td>015IMGT-M052-B10</td>
+		<td>015IMGT-M064-D01</td>
+		<td>015IMGT-M070-E08</td>
+	</tr>
+	<tr>
+		<td>015IMGT-M014-G05</td>
+		<td>015IMGT-M026-F12</td>
+		<td>015IMGT-M032-A04</td>
+		<td>015IMGT-M036-G11</td>
+		<td>015IMGT-M043-D06</td>
+		<td>015IMGT-M053-A07</td>
+		<td>015IMGT-M064-E07</td>
+		<td>015IMGT-M071-D12</td>
+	</tr>
+	<tr>
+		<td>015IMGT-M015-C04</td>
+		<td>015IMGT-M028-C09</td>
+		<td>015IMGT-M033-A07</td>
+		<td>015IMGT-M037-B02</td>
+		<td>015IMGT-M043-F12</td>
+		<td>015IMGT-M054-E01</td>
+		<td>015IMGT-M066-E09</td>
+		<td>015IMGT-M071-F10</td>
+	</tr>
+	<tr>
+		<td>015IMGT-M015-D08</td>
+		<td>015IMGT-M029-D04</td>
+		<td>015IMGT-M033-E03</td>
+		<td>015IMGT-M038-A08</td>
+		<td>015IMGT-M045-G04</td>
+		<td>015IMGT-M058-B05</td>
+		<td>015IMGT-M067-D06</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>015IMGT-M015-F06</td>
+		<td>015IMGT-M029-E04</td>
+		<td>015IMGT-M033-E05</td>
+		<td>015IMGT-M039-D07</td>
+		<td>015IMGT-M046-G03</td>
+		<td>015IMGT-M058-H09</td>
+		<td>015IMGT-M067-F04</td>
+		<td></td>
+	</tr>
+</tbody>
+</table>
+	<p>
+		Note:
+		<ul>
+			<li>The first cell must say <i style="color: red;">Plate</i>, followed by a delimiter and an optional plate description.</li>
+			<li>Optionally, in the second row, include <i>Barcode</i> in the first column and the barcode of the plate in the second column.</li>
+			<li>The listed antibody clone IDs or names correspond to their positions in the plate.</li>
+			<li>List subsequent plates below the first, repeating the header lines.</li>
+			<li>Upload a text file.</li>
+		</ul>
+	</p>
+	</div>
+</body>
+<!--
+Plate	Plate description						
+Barcode	GD0000024189						
+015IMGT-M011-C11	015IMGT-M021-E06	015IMGT-M030-G07	015IMGT-M034-B06	015IMGT-M039-G07	015IMGT-M046-H02	015IMGT-M059-C02	015IMGT-M068-H04
+015IMGT-M012-E05	015IMGT-M021-F01	015IMGT-M031-A04	015IMGT-M034-G01	015IMGT-M040-F05	015IMGT-M047-H07	015IMGT-M061-D08	015IMGT-M069-D03
+015IMGT-M013-C02	015IMGT-M026-A12	015IMGT-M031-E12	015IMGT-M035-G12	015IMGT-M040-F12	015IMGT-M051-G03	015IMGT-M062-E10	015IMGT-M070-A08
+015IMGT-M014-E07	015IMGT-M026-D07	015IMGT-M031-H06	015IMGT-M036-E10	015IMGT-M040-G12	015IMGT-M052-B10	015IMGT-M064-D01	015IMGT-M070-E08
+015IMGT-M014-G05	015IMGT-M026-F12	015IMGT-M032-A04	015IMGT-M036-G11	015IMGT-M043-D06	015IMGT-M053-A07	015IMGT-M064-E07	015IMGT-M071-D12
+015IMGT-M015-C04	015IMGT-M028-C09	015IMGT-M033-A07	015IMGT-M037-B02	015IMGT-M043-F12	015IMGT-M054-E01	015IMGT-M066-E09	015IMGT-M071-F10
+015IMGT-M015-D08	015IMGT-M029-D04	015IMGT-M033-E03	015IMGT-M038-A08	015IMGT-M045-G04	015IMGT-M058-B05	015IMGT-M067-D06	
+015IMGT-M015-F06	015IMGT-M029-E04	015IMGT-M033-E05	015IMGT-M039-D07	015IMGT-M046-G03	015IMGT-M058-H09	015IMGT-M067-F04	
+-->
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="generate source xjc" default="all-src-gen">
+	
+	<property file="build.properties" />
+	<property name="dest.package" value="genedata.bx.bl.adapter.ws.sequence.schema" />
+	<property name="dest.package.dir" value="${src.gen.dir}/genedata/bx/bl/adapter/ws/sequence/schema"/>
+
+	<property name="xsd.source.dir" value="${src.dir}/genedata/bx/bl/adapter/ws/sequence"/>
+	<property name="xsd.file" value="ws_sequence_v1_annotated.xsd" />
+
+	<target name="all-src-gen" description="all source generation" 
+  		depends="xjc-gen"
+  	/>
+
+	<target name="xjc-gen" description="generate Java from XSD">
+
+		<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+			<classpath>
+				<fileset dir="lib-gen/jaxb-2.2" includes="jaxb-xjc.jar" />
+			</classpath>
+		</taskdef>
+
+	    <mkdir dir="${src.gen.dir}"/>
+		<xjc destdir="${src.gen.dir}" removeOldOutput="no" target="2.0" package="${dest.package}">
+			<schema dir="${xsd.source.dir}" includes="${xsd.file}" />
+			<produces dir="${dest.package.dir}" includes="*.java" />
+		</xjc>
+	</target>
+
+	<target name="xjc-clean" description="remove generated Java sources">
+		<delete>
+			<fileset dir="${dest.package.dir}"  includes="*.java"/>
+		</delete>
+	</target>
+</project>

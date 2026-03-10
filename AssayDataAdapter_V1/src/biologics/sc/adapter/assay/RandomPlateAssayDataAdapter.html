@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note: everything outside body is ignored. -->
+</head>
+<body>
+
+	<p>
+		This adapter will create assay values for each Clone of the selected
+		Plate Set. It requires no further parameters to be given, nor any
+		file upload.
+		<br /> 
+		This adapter is a <b>sample implementation</b>, and is usually not 
+		registered at customers. 
+	</p>
+	<hr />
+	<p>
+		This section serves as test that certain html elements (styles, links) work 
+		<ul>
+			<li>this list is shown correctly?</li>
+			<li>this text is <span style="color: red;">red</span> or <span style="color: green">green</span>?</li>
+			<li>this <a href="http://www.google.com">link</a> is clickable?</li>
+		</ul>
+	</p>
+	<hr />
+	<p>
+		This section serves as test that EL element replacement does not works 
+		<ul>
+			<li>Showing the admin email: #{parameter.admin_email}</li>
+			<li>Showing the application name: #{parameter.app_name}</li>
+			<li>Showing the current user: #{user.name}</li>
+			<li>Showing the label for an Isolate: #{labels.EntityClassSingular.Isolate}</li>
+		</ul>
+	</p>
+	<hr />
+	<p>
+		This section serves as test that scoped styles (HTML5 feature) work. This 
+		is important because for pre-html5 to be valid styles had to appear in
+		the head section.  
+		
+		<div>
+			<style type = "text/css" scoped>
+				span { color: red; } 
+			</style>
+		
+			<span>Hello</span>
+		</div>
+		
+		<span>World</span>
+		<br />
+		If "Hello" is red and "World" is black, the scoped styles work. 
+	</p>
+	<hr />
+	
+</body>
+</html>

@@ -1,0 +1,15 @@
+
+Short description of the deployment procedure of the "Properties Calculation Adapter".
+
+1. Locate the installation directory of the Genedata Biologics system.
+
+2. Copy the file properties-calculation-adapter.jar into the folder $CATALINA_BASE/biologics/adapters/.
+
+3. Connect to the Oracle Database Instance which contains the schema of the Genedata Biologics system.
+
+4. Use the SQL statements specified in the file register-adapter.sql to register the new Properties Calculation Adapter with the Genedata Biologics system.
+
+5. Restart the Tomcat server of the Genedata Biologics system.
+
+6. Please ensure that the Login screen of the Genedata Biologics system does not show any warning messages.  If it does, then please forward the displayed messages to Genedata.
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note: everything outside body is ignored. -->
+</head>
+<body>
+	<div>
+		<style type = "text/css" scoped>
+			table#docuIpadaTab {
+				background-color: white;
+			}
+			table#docuIpadaTab td {
+				padding: 2px 5px;
+				font-family: monospace;
+			}
+			table#docuIpadaTab tr:nth-child(even) {
+				background-color: #f2f2f2;
+			}
+			table#docuIpadaTab tr:nth-child(odd) {
+				background-color: white;
+			}
+		</style>
+		
+		<p>
+			When generating a worklist file, a text file containing a list of Entity IDs separated by new lines
+			may optionally be uploaded to limit the selection of entities.
+			Below is an example of the content of such a text file:
+		</p>
+		
+		<table id="docuIpadaTab">
+			<tr>
+				<td>PEB-265</td>
+			</tr>
+			<tr>
+				<td>PEB-262</td>
+			</tr>
+			<tr>
+				<td>PEB-263</td>
+			</tr>
+		</table>
+		
+		<p>
+			Entities extracted from an uploaded file can belong to one of the following Entity Types:
+		</p>
+		
+		<ul>
+			<li>Vector Batch</li>
+			<li>Cell Line Batch</li>
+			<li>Protein Expression Batch</li>
+			<li>Protein Purification Batch</li>
+			<li>Aliquot Group</li>
+		</ul>
+		
+		<p>
+			If no such file is uploaded, the system will use the entire content of the source Protein Production Plate
+			Set as selected entities.
+		</p>
+		
+		<p>
+			The worklist items are tab-separated or comma-separated based on the system configuration.
+			Below is an example of the content of a worklist file that the system will generate.
+		</p>
+
+		<table id="docuIpadaTab">
+			<thead>
+				<tr>
+					<th>Source Plate Name</th>
+					<th>Source Plate Barcode</th>
+					<th>Source Well</th>
+					<th>Well Content ID</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>All PPBs</td>
+					<td>BC001</td>
+					<td>A03</td>
+					<td>PPB-9</td>
+					<td>True</td>
+				</tr>
+				<tr>
+					<td>All PPBs</td>
+					<td>BC001</td>
+					<td>A04</td>
+					<td>PPB-10</td>
+					<td>True</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

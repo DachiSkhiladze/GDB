@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note: everything outside body is ignored. -->
+</head>
+<body>
+		
+	<div>
+		<style type = "text/css" scoped>
+			table#docuDadaTab, table#docuDadaTab th {
+			    border-top: 1px solid black;
+			    border-bottom: 1px solid black;
+			    border-collapse: collapse;
+			    background-color: white;
+			}
+			table#docuDadaTab th, table#docuDadaTab td {
+				padding: 5px 8px;
+			}
+			table#docuDadaTab tr:nth-child(odd) {
+			    background-color: #f2f2f2;
+			}
+			table#docuDadaTab tr:nth-child(even) {
+			   background-color: white;
+			}
+		</style>
+
+		<p>
+			Example ELISA file format:
+		</p>
+		
+		<table id="docuDadaTab">
+			<thead>
+				<tr>
+					<th>Antibody Clone ID</th>
+					<th>Antibody Clone Name</th>
+					<th>S</th>
+					<th>B</th>
+					<th>S/B</th>
+					<th>Activity Level</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>CL-204</td>
+					<td></td>
+					<td>123.4</td>
+					<td>8.22</td>
+					<td>15.01</td>
+					<td>-</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>023D-M21-B04</td>
+					<td>99</td>
+					<td>11</td>
+					<td></td>
+					<td>+++</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<p>
+			Note: 
+		</p>
+		<ul>
+			<li>Antibody IDs or names must be listed.</li>
+			<li>Only mandatory measurement attributes need to be listed.</li>
+			<li>See the Assay Attributes Documentation to see the configured measurement attributes.</li>
+		</ul>
+		
+	</div>
+</body>
+</html>

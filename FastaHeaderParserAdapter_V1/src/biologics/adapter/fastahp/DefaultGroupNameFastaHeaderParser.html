@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note: everything outside body is ignored. -->
+</head>
+<body>
+	<p>
+		Example file format:
+	</p>
+
+<pre>
+>158L_IGT description
+GGGAACGTTTTCTGCAGTCACCGTCCTTGACACGAAGCTTCGAAGCCACC
+ATGGACACCAGGCTCAGCTTGGGTTTCCTTGTCCTTTTCATAAAAGGTGT
+CATTACTCTGACTCCTAAAGGTCACGTGTGTTGTGGTAAAACATCAACCA
+AGATGATCCGAAAAACCAAAACAAATAAAGAAAAACCGAAAAGAAACCAA
+AATTAAATC
+>159H_IGT
+ATCCTACACCTTTTCTGCAGTCACCGTCCTTGGCACGAAGCTTCGAAGCC
+ACCATGGACACCAGGCTCAGCTTGGTTTTCCTTGTCCTTTTTATGAAAGG
+TGTCCAGTGTGAGGTGCAGTTGGTGGAGTCTGGGGGAGGCTTAGTGCAGC
+CCAGAAGTATCATCTGTCTTCATCTTCCCCCCAAAGCCCAACATGTGCTT
+ACCATTACTCTGACTCCTAAATCACGTGTTTTTATAGAACATCAGCCAGG
+ATGATCCGAACTCTATTCATCTTACGTCAGTTGAATGTTACAAGCGT
+</pre>
+	<p>
+		Note:
+		<ul>
+			<li>By default, the header contains a &gt;, the first part of the group ID, the VL/VH variable domain information as either <b>L</b> or <b>H</b>, and the second part of the group ID.</li>
+			<li>The two parts of the group ID are concatenated, the variable domain information is not part of the group ID (i.e. <b>158_IGT</b> and <b>159_IGT</b> in the example above).</li>
+		</ul>
+	</p>
+
+</body>
+</html>

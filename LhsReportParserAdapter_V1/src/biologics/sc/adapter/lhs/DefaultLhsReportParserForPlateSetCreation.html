@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note: everything outside body is ignored. -->
+</head>
+<body>
+	<div>
+		<style type = "text/css" scoped>
+			table#docuDadaTab, table#docuDadaTab th {
+			    border-top: 1px solid black;
+			    border-bottom: 1px solid black;
+			    border-collapse: collapse;
+			    background-color: white;
+			}
+			table#docuDadaTab th, table#docuDadaTab td {
+				padding: 5px 8px;
+			}
+			table#docuDadaTab tr:nth-child(odd) {
+			    background-color: #f2f2f2;
+			}
+			table#docuDadaTab tr:nth-child(even) {
+			   background-color: white;
+			}
+		</style>
+
+		<p>
+			Example colony picking LHS report for creating plate sets:
+		</p>
+<table id="docuDadaTab">
+	<tr>
+		<td>0</td>
+		<td>GDB0000212</td>
+		<td>A</td>
+		<td>1</td>
+		<td>GDB-AG-000144</td>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>GDB0000212</td>
+		<td>A</td>
+		<td>2</td>
+		<td>GDB-AG-000144</td>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>GDB0000212</td>
+		<td>A</td>
+		<td>3</td>
+		<td>GDB-AG-000144</td>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>GDB0000212</td>
+		<td>A</td>
+		<td>4</td>
+		<td>GDB-AG-000145</td>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>GDB0000212</td>
+		<td>A</td>
+		<td>5</td>
+		<td>GDB-AG-000146</td>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>GDB0000212</td>
+		<td>A</td>
+		<td>6</td>
+		<td>GDB-AG-000146</td>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>GDB0000212</td>
+		<td>A</td>
+		<td>7</td>
+		<td>GDB-AG-000146</td>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>GDB0000212</td>
+		<td>A</td>
+		<td>8</td>
+		<td>GDB-AG-000146</td>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>GDB0000212</td>
+		<td>A</td>
+		<td>9</td>
+		<td>GDB-AG-000146</td>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>GDB0000212</td>
+		<td>A</td>
+		<td>10</td>
+		<td>GDB-AG-000147</td>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>GDB0000212</td>
+		<td>A</td>
+		<td>11</td>
+		<td>GDB-AG-000148</td>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>GDB0000212</td>
+		<td>A</td>
+		<td>12</td>
+		<td>GDB-AG-000149</td>
+	</tr>
+</table>
+	<p>
+		Note:
+		<ul>
+			<li>The columns are separated by tabs.</li>
+			<li>The first column is ignored.</li>
+			<li>The new plate set will have plates with the barcodes specified in the second column.</li>
+			<li>The well addresses of the new plates are specified in the third and fourth columns.</li>
+			<li>The agar plates must already exist in Genedata Biologics. Their barcodes are listed in the fifth column.</li>
+			<li>The resulting plate set is a <i>master</i> plate set, and new antibody clone IDs are generated for each well of each plate.</li>
+		</ul>
+	</p>
+	</div>
+</body>
+</html>

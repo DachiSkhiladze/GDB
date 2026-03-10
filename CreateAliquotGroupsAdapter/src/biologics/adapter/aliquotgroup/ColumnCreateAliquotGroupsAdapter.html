@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note: everything outside body is ignored. -->
+</head>
+<body>
+	<div>
+		<style type = "text/css" scoped>
+			table#docuDadaTab, table#docuDadaTab th {
+			    border-top: 1px solid black;
+			    border-bottom: 1px solid black;
+			    border-collapse: collapse;
+			    background-color: white;
+			}
+			table#docuDadaTab th, table#docuDadaTab td {
+				padding: 5px 8px;
+			}
+			table#docuDadaTab tr:nth-child(odd) {
+			    background-color: #f2f2f2;
+			}
+			table#docuDadaTab tr:nth-child(even) {
+			   background-color: white;
+			}
+		</style>
+		
+		<p>
+			Example column-based file format:
+		</p>
+		
+		<table id="exampleFileFormat">
+			<thead>
+				<tr>
+					<th>Plate Barcode</th>
+					<th>Well Address</th>
+					<th>Cell Line Batch ID</th>
+					<th>Cell Line Batch Name</th>
+					<th>Aliquot Group Name</th>
+					<th>Description</th>
+					<th>Aliquots Initial Number</th>
+					<th>Aliquot Barcodes</th>
+					<th>Number Of Cells Per Aliquot</th>
+					<th>Reference Sample</th>
+					<th>Archived</th>
+					<th>Freezing Date</th>
+					<th>Freezer Location</th>
+					<th>Freezer Rack Number</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>ABC-000-001</td>
+					<td>A1</td>
+					<td></td>
+					<td></td>
+					<td>Test1</td>
+					<td>Test entry</td>
+					<td>5</td>
+					<td>BC1,BC2</td>
+					<td>10</td>
+					<td>N</td>
+					<td>N</td>
+					<td>2017-01-01</td>
+					<td>Loc1</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>ABC-000-001</td>
+					<td>A2</td>
+					<td></td>
+					<td></td>
+					<td>Test2</td>
+					<td>Test entry</td>
+					<td>4</td>
+					<td>BC3,BC4</td>
+					<td>10</td>
+					<td>N</td>
+					<td>N</td>
+					<td>2017-01-01</td>
+					<td>Loc1</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td>CLIB-1</td>
+					<td></td>
+					<td>Test3</td>
+					<td>Test entry</td>
+					<td>3</td>
+					<td>BC5</td>
+					<td>14</td>
+					<td>N</td>
+					<td>N</td>
+					<td>2017-01-03</td>
+					<td>Loc3</td>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td>CLIB-2</td>
+					<td></td>
+					<td>Test4</td>
+					<td>Test entry</td>
+					<td>2</td>
+					<td>BC6,BC7</td>
+					<td>12</td>
+					<td>N</td>
+					<td>N</td>
+					<td>2017-01-04</td>
+					<td>Loc4</td>
+					<td>4</td>
+				</tr>
+			</tbody>
+		</table>
+<p>
+<p>
+		<p>
+			Notes: 
+		</p>
+		<ul>
+			<li>Required are both the Plate Barcode and Well Address columns, or either the Cell Line Batch ID or Name column.</li>
+			<li>The remaining columns are optional.</li>
+			<li>The Aliquot Group Names must be unique.</li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note: everything outside body is ignored. -->
+</head>
+<body>
+		<p>
+			Example BD FACSArray Bioanalyzer file format:
+		</p>
+<pre>
+Experiment Name,Plate ID,Well ID,Sample Name,Well Name,Collection Date,Operator,Unique ID,P2 #Events,P2 %Parent,P2 Yellow-A Geometric Mean
+hIgG1 binding,006NGK-M001,A1,Sample_001,.,29 oct. 10 15:16:06,janette,55rgar64gaf654g,20325,"99,9",15655
+hIgG1 binding,006NGK-M001,B1,Sample_002,.,29 oct. 10 15:22:56,janette,a54g6f4g6a5df4g,5679,"99,9",12184
+hIgG1 binding,006NGK-M001,C1,Sample_003,.,29 oct. 10 15:29:43,janette,a54g45fsag15fa4,11870,"100,0",17712
+hIgG1 binding,006NGK-M001,D1,Sample_004,.,29 oct. 10 15:37:58,janette,65fag46af54g64g,3953,"98,8",14341
+hIgG1 binding,006NGK-M001,E1,Sample_005,.,29 oct. 10 15:44:25,janette,46fads5f4g6s54s,5853,"99,9",15734
+hIgG1 binding,006NGK-M001,F1,Sample_006,.,29 oct. 10 15:50:28,janette,hb5fdhb6f1sbn5s,6020,"100,0",17741
+</pre>
+		<p>
+			Note: 
+		</p>
+		<ul>
+			<li>The plate names must be listed in the Plate ID column.</li>
+			<li>The assay run is automatically linked to the plate set to which the plates belong.</li>
+			<li>The antibody clone in each well of each plate is linked to its assay values. The other columns are ignored.</li>
+			<li>Cell entries may be quoted.</li>
+			<li>Columns are separated by commas.</li>
+		</ul>
+</body>
+</html>
+

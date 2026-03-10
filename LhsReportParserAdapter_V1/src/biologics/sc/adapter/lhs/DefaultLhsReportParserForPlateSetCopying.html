@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Note: everything outside body is ignored. -->
+</head>
+<body>
+	<p>
+		Example liquid handing system report for copying a plate set:
+	</p>
+<pre>
+Parameter1,Parameter2,Parameter3,Type,#,Barcode
+,,,Source,1,GDB0000331
+,,,Source,2,GDB0000332
+,,,Source,3,GDB0000333
+,,,Source,4,GDB0000334
+,,,Destination,1,GDB00009887
+,,,Destination,2,GDB00009888
+,,,Destination,3,GDB00009889
+,,,Destination,4,GDB00009890
+</pre>
+	<p>
+		This adapter expects a comma-separated text file (<em>csv</em>) as input.
+		The uploaded file should contain at least six columns, e.g.:
+	<pre>
+Parameter1,Parameter2,Parameter3,Type,#,Barcode
+	</pre>
+		The names of the columns are irrelevant in this adapter, only the order of columns is of importance.  
+		<ul>
+			<li>The first three columns are silently ignored by this adapter. </li>
+			<li>Column four (<em>Type</em> in the example) must contain a keyword to identify the source plates. 
+			Supported keywords are stored in table PARAMETER under the key <code>lhs_report_source_plate_identifiers</code>. 
+			In the shipped configuration, every row containing the word <code>Source</code> is treated as source, all other are destinations for the copying process.
+			</li>
+			<li>Column five (<em>#</em> in the example) must contain a group number that connects the source and destination plate pairs for the copy operation. The group number must match for the source and destination plate pair.</li>
+			<li>Column six (<em>Barcode</em> in the example) must contain the barcode of the plate.</li>
+		</ul>
+	</p>
+</body>
+</html>
+
